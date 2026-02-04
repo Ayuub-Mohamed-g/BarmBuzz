@@ -12,13 +12,21 @@ Configuration StudentBaseline {
 
     Node $AllNodes.NodeName {
 
-        # WEEK 1:
-        # Put a simple resource here to prove the pipeline works.
-        # Examples:
-        # - File resource to create a folder
-        # - Registry resource to set a harmless key/value
-        #
-        # WEEK 2+:
-        # Expand toward AD DS, DNS, domain build, then OU/users/groups.
+        # Ensure C:\TEST exists
+        File TestFolder {
+            DestinationPath = 'C:\TEST'
+            Type            = 'Directory'
+            Ensure          = 'Present'
+        }
+
+        # Ensure C:\TEST\test.txt exists with content
+        File TestFile {
+            DestinationPath = 'C:\TEST\test.txt'
+            Type            = 'File'
+            Ensure          = 'Present'
+            Contents        = 'Proof-of-life: DSC created this file.'
+            DependsOn       = '[File]TestFolder'
+        }
+
     }
 }
