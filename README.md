@@ -59,12 +59,49 @@ All end-user accounts you create for the scenario must use:
 ### 2.3 Important: do not improvise passwords
 If you use different passwords, you will break automation runs and support will not debug it.
 
-### 2.4 Important: do not place passwords into your config/data files
-You must not hardcode passwords into StudentConfig.ps1 or AllNodes.psd1.
-The orchestrator will handle credentials (I have provided the mechanism).
+### 2.4 🔐 CRITICAL SECURITY RULE: NEVER commit credentials
 
-For now (Week 1), you are allowed to use the fixed passwords manually if needed.
-Once the secrets mechanism is provided, you must use it.
+**YOU MUST NOT hardcode passwords into `StudentConfig.ps1` or `AllNodes.psd1`.**
+
+**Why this matters on a Cybersecurity degree:**
+Real-world incidents:
+- **2021 Uber breach**: Engineer committed AWS keys to GitHub → $100k unauthorized charges, termination, company fined
+- **2019 Capital One breach**: Misconfigured credentials → 100M customer records stolen, $80M fine
+- **2020 Codecov supply chain**: Exposed credentials in CI/CD → 29,000+ organizations compromised
+
+**What happens when you commit a secret:**
+1. It's in Git history **FOREVER** (even if you delete it 5 seconds later)
+2. GitHub/GitLab/Bitbucket scan for secrets automatically (you WILL get flagged)
+3. If your repo ever becomes public (portfolio, etc.) → instant breach
+4. Tools like TruffleHog, git-secrets, and GitGuardian can find it years later
+5. Employers check your GitHub - this is a red flag that ends interviews
+
+**The ONLY fix for a committed secret:**
+- Rotate the credential (change the password/key)
+- Deleting the file does NOT remove it from Git history
+- Rewriting history (`git rebase`) is complex and often fails
+
+**Professional alternatives (what we're teaching you):**
+- Credentials passed at runtime (what Run_BuildMain.ps1 will do)
+- Vault systems: Azure KeyVault, AWS Secrets Manager, HashiCorp Vault
+- Certificate-based encryption for DSC MOFs (production pattern)
+- Environment variables (better than hardcoding, but not ideal)
+- CI/CD secrets management (GitHub Actions Secrets, GitLab CI Variables)
+
+**For this lab:**
+- Fixed passwords are documented HERE in the README (acceptable for academic lab context)
+- Use them MANUALLY when needed (PowerShell sessions, testing)
+- The orchestrator will handle credential injection when DSC resources need them
+- You'll learn the secure pattern by following the provided mechanism
+
+**Threat model awareness:**
+Even in a lab, practice defense-in-depth:
+- Assume your repo will be cloned by classmates, internal and external examiners and of   course your module tutor. 
+- Assume your evidence logs will be read and audited
+- Assume you'll put this repo on your GitHub profile for job applications
+- Practice like you'll work: secure by default
+
+COme on, be the pro this is 2026.
 
 ---
 
