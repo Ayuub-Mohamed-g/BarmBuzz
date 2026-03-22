@@ -1,0 +1,45 @@
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : DC01
+   Primary Dns Suffix  . . . . . . . : 
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Desktop Adapter
+   Physical Address. . . . . . . . . : 08-00-27-B4-8A-8E
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::7f6e:f3b1:3fed:6dda%7(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 192.168.56.10(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : 192.168.56.1
+   DHCPv6 IAID . . . . . . . . . . . : 84410407
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-31-30-E8-39-08-00-27-B4-8A-8E
+   DNS Servers . . . . . . . . . . . : 127.0.0.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+Ethernet adapter Ethernet 2:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Desktop Adapter #2
+   Physical Address. . . . . . . . . : 08-00-27-10-25-93
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv6 Address. . . . . . . . . . . : fd17:625c:f037:3:7c4d:3009:4949:6643(Preferred) 
+   Link-local IPv6 Address . . . . . : fe80::ff:a323:4cbb:b609%4(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 10.0.3.15(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : 22 March 2026 12:55:01
+   Lease Expires . . . . . . . . . . : 23 March 2026 12:55:00
+   Default Gateway . . . . . . . . . : fe80::2%4
+                                       10.0.3.2
+   DHCP Server . . . . . . . . . . . : 10.0.3.2
+   DHCPv6 IAID . . . . . . . . . . . : 168296487
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-31-30-E8-39-08-00-27-B4-8A-8E
+   DNS Servers . . . . . . . . . . . : 192.168.100.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled

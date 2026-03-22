@@ -1,0 +1,94 @@
+
+Microsoft (R) Windows (R) Operating System Group Policy Result tool v2.0
+c Microsoft Corporation. All rights reserved.
+
+Created on ?22/?03/?2026 at 13:54:23
+
+
+
+RSOP data for BOLTON\Administrator on DC01 : Logging Mode
+----------------------------------------------------------
+
+OS Configuration:            Primary Domain Controller
+OS Version:                  10.0.26100
+Site Name:                   Default-First-Site-Name
+Roaming Profile:             N/A
+Local Profile:               C:\Users\Administrator
+Connected over a slow link?: No
+
+
+COMPUTER SETTINGS
+------------------
+    CN=DC01,OU=Domain Controllers,DC=bolton,DC=barmbuzz,DC=test
+    Last time Group Policy was applied: 22/03/2026 at 13:53:39
+    Group Policy was applied from:      DC01.bolton.barmbuzz.test
+    Group Policy slow link threshold:   500 kbps
+    Domain Name:                        BOLTON
+    Domain Type:                        Windows 2008 or later
+
+    Applied Group Policy Objects
+    -----------------------------
+        Default Domain Controllers Policy
+        Default Domain Policy
+
+    The following GPOs were not applied because they were filtered out
+    -------------------------------------------------------------------
+        Local Group Policy
+            Filtering:  Not Applied (Empty)
+
+    The computer is a part of the following security groups
+    -------------------------------------------------------
+        BUILTIN\Administrators
+        Everyone
+        BUILTIN\Users
+        BUILTIN\Pre-Windows 2000 Compatible Access
+        Windows Authorization Access Group
+        NT AUTHORITY\NETWORK
+        NT AUTHORITY\Authenticated Users
+        This Organization
+        DC01$
+        Domain Controllers
+        NT AUTHORITY\ENTERPRISE DOMAIN CONTROLLERS
+        Authentication authority asserted identity
+        Denied RODC Password Replication Group
+        System Mandatory Level
+        
+
+USER SETTINGS
+--------------
+    CN=Administrator,CN=Users,DC=bolton,DC=barmbuzz,DC=test
+    Last time Group Policy was applied: 22/03/2026 at 13:38:38
+    Group Policy was applied from:      DC01.bolton.barmbuzz.test
+    Group Policy slow link threshold:   500 kbps
+    Domain Name:                        BOLTON
+    Domain Type:                        Windows 2008 or later
+    
+    Applied Group Policy Objects
+    -----------------------------
+        N/A
+
+    The following GPOs were not applied because they were filtered out
+    -------------------------------------------------------------------
+        Local Group Policy
+            Filtering:  Not Applied (Empty)
+
+    The user is a part of the following security groups
+    ---------------------------------------------------
+        Domain Users
+        Everyone
+        BUILTIN\Administrators
+        BUILTIN\Users
+        BUILTIN\Pre-Windows 2000 Compatible Access
+        NT AUTHORITY\INTERACTIVE
+        CONSOLE LOGON
+        NT AUTHORITY\Authenticated Users
+        This Organization
+        LOCAL
+        Domain Admins
+        Group Policy Creator Owners
+        Enterprise Admins
+        Schema Admins
+        Authentication authority asserted identity
+        Denied RODC Password Replication Group
+        High Mandatory Level
+        

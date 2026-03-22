@@ -1,0 +1,15 @@
+
+DistinguishedName : CN=GG-IT-Admins,OU=BoltonAdmins,OU=Bolton,DC=bolton,DC=barmbuzz,DC=test
+Name              : GG-IT-Admins
+ObjectClass       : group
+ObjectGUID        : 85eba2b8-f77b-47c8-9793-c8dc63f1866e
+SamAccountName    : GG-IT-Admins
+SID               : S-1-5-21-3826654773-3120736793-2904011677-1106
+
+DistinguishedName : CN=GG-Derby-IT-Admins,OU=DerbyAdmins,OU=Derby,DC=bolton,DC=barmbuzz,DC=test
+Name              : GG-Derby-IT-Admins
+ObjectClass       : group
+ObjectGUID        : ae0898c2-365b-471b-b946-79e8321a2950
+SamAccountName    : GG-Derby-IT-Admins
+SID               : S-1-5-21-3826654773-3120736793-2904011677-1109
+

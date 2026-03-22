@@ -1,0 +1,17 @@
+
+AppliesTo                   : {CN=GG-Derby-IT-Admins,OU=DerbyAdmins,OU=Derby,DC=bolton,DC=barmbuzz,DC=test, CN=GG-IT-Admins,OU=BoltonAdmins,OU=Bolton,DC=bolton,DC=barmbuzz,DC=test}
+ComplexityEnabled           : True
+DistinguishedName           : CN=PSO-Admins,CN=Password Settings Container,CN=System,DC=bolton,DC=barmbuzz,DC=test
+LockoutDuration             : 00:30:00
+LockoutObservationWindow    : 00:30:00
+LockoutThreshold            : 3
+MaxPasswordAge              : 30.00:00:00
+MinPasswordAge              : 1.00:00:00
+MinPasswordLength           : 16
+Name                        : PSO-Admins
+ObjectClass                 : msDS-PasswordSettings
+ObjectGUID                  : 1ef6168e-2504-4364-bfae-9449f0164f2a
+PasswordHistoryCount        : 24
+Precedence                  : 10
+ReversibleEncryptionEnabled : False
+
