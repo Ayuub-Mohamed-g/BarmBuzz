@@ -25,7 +25,6 @@ Configuration StudentBaseline {
             Type            = 'Directory'
             Ensure          = 'Present'
         }
-
         File TestFile {
             DestinationPath = 'C:\TEST\test.txt'
             Type            = 'File'
@@ -42,82 +41,54 @@ Configuration StudentBaseline {
             SafemodeAdministratorPassword = $DsrmCredential
         }
 
-        # 2. OU Structure
-        ADOrganizationalUnit OU_Users {
-            Name      = 'Users'
-            Path      = "DC=bolton,DC=barmbuzz,DC=test"
-            DependsOn = '[ADDomain]BoltonDomain'
-        }
-        
-        ADOrganizationalUnit OU_Computers {
-            Name      = 'Computers'
-            Path      = "DC=bolton,DC=barmbuzz,DC=test"
-            DependsOn = '[ADDomain]BoltonDomain'
+        # 2. Data-Driven OU Structure 
+        foreach ($ou in $Node.OUs) {
+            ADOrganizationalUnit "OU_$($ou.Name)" {
+                Name      = $ou.Name
+                Path      = $ou.Path
+                DependsOn = '[ADDomain]BoltonDomain'
+            }
         }
 
-        ADOrganizationalUnit OU_ITAdmins {
-            Name      = 'IT-Admins'
-            Path      = "DC=bolton,DC=barmbuzz,DC=test"
-            DependsOn = '[ADDomain]BoltonDomain'
+        # 3. Data-Driven RBAC Groups
+        foreach ($group in $Node.Groups) {
+            $ouName = $group.Path.Split(',')[0].Split('=')[1]
+            ADGroup "Group_$($group.Name)" {
+                GroupName  = $group.Name
+                Path       = $group.Path
+                Category   = 'Security'
+                GroupScope = 'Global'
+                DependsOn  = if ($ouName -eq 'bolton') { '[ADDomain]BoltonDomain' } else { "[ADOrganizationalUnit]OU_$ouName" }
+            }
         }
 
-        ADOrganizationalUnit OU_Derby {
-            Name      = 'Derby'
-            Path      = "DC=bolton,DC=barmbuzz,DC=test"
-            DependsOn = '[ADDomain]BoltonDomain'
+        # 4. Data-Driven Identity Baseline
+        foreach ($user in $Node.Users) {
+            $ouName = $user.Path.Split(',')[0].Split('=')[1]
+            ADUser "User_$($user.Name)" {
+                UserName    = $user.Name
+                Path        = $user.Path
+                Password    = $UserCredential
+                DependsOn   = if ($ouName -eq 'bolton') { '[ADDomain]BoltonDomain' } else { "[ADOrganizationalUnit]OU_$ouName" }
+            }
+
+            ADGroupMember "Member_$($user.Name)" {
+                GroupName = $user.Group
+                Members   = $user.Name
+                DependsOn = @("[ADGroup]Group_$($user.Group)", "[ADUser]User_$($user.Name)")
+            }
         }
 
-        ADOrganizationalUnit OU_Nottingham {
-            Name      = 'Nottingham'
-            Path      = "OU=Derby,DC=bolton,DC=barmbuzz,DC=test"
-            DependsOn = '[ADOrganizationalUnit]OU_Derby'
+        # 5. Data-Driven Group Policy Creation
+        foreach ($gpo in $Node.GPOs) {
+            GroupPolicy "GPO_$($gpo.Name)" {
+                Name   = $gpo.Name
+                Ensure = $gpo.Ensure
+                DependsOn = '[ADDomain]BoltonDomain'
+            }
         }
 
-        # 3. RBAC Groups
-        ADGroup GG_Staff {
-            GroupName  = 'GG-Staff'
-            Path       = "OU=Users,DC=bolton,DC=barmbuzz,DC=test"
-            Category   = 'Security'
-            GroupScope = 'Global'
-            DependsOn  = '[ADOrganizationalUnit]OU_Users'
-        }
-
-        ADGroup GG_ITAdmins {
-            GroupName  = 'GG-IT-Admins'
-            Path       = "OU=IT-Admins,DC=bolton,DC=barmbuzz,DC=test"
-            Category   = 'Security'
-            GroupScope = 'Global'
-            DependsOn  = '[ADOrganizationalUnit]OU_ITAdmins'
-        }
-
-        # 4. Identity Baseline (Users)
-        ADUser User_JohnDoe {
-            UserName    = 'JohnDoe'
-            Path        = "OU=Users,DC=bolton,DC=barmbuzz,DC=test"
-            Password    = $UserCredential
-            DependsOn   = '[ADOrganizationalUnit]OU_Users'
-        }
-
-        ADGroupMember Member_JohnDoe {
-            GroupName = 'GG-Staff'
-            Members   = 'JohnDoe'
-            DependsOn = @('[ADGroup]GG_Staff', '[ADUser]User_JohnDoe')
-        }
-
-        ADUser User_AdminJane {
-            UserName    = 'AdminJane'
-            Path        = "OU=IT-Admins,DC=bolton,DC=barmbuzz,DC=test"
-            Password    = $UserCredential
-            DependsOn   = '[ADOrganizationalUnit]OU_ITAdmins'
-        }
-
-        ADGroupMember Member_AdminJane {
-            GroupName = 'GG-IT-Admins'
-            Members   = 'AdminJane'
-            DependsOn = @('[ADGroup]GG_ITAdmins', '[ADUser]User_AdminJane')
-        }
-
-        # 5. Security Policies (A* FGPP Requirements)
+        # 6. A* FGPP Requirements (Hard-coded structure representing Tier-0 Security)
         ADFineGrainedPasswordPolicy PwdPolicyAdmins {
             Name               = 'FGPP-ITAdmins'
             Precedence         = 10
@@ -135,7 +106,7 @@ Configuration StudentBaseline {
         ADFineGrainedPasswordPolicySubject PwdPolicyAdminsSubject {
             PolicyName = 'FGPP-ITAdmins'
             Subjects   = 'GG-IT-Admins'
-            DependsOn  = @('[ADFineGrainedPasswordPolicy]PwdPolicyAdmins', '[ADGroup]GG_ITAdmins')
+            DependsOn  = @('[ADFineGrainedPasswordPolicy]PwdPolicyAdmins', '[ADGroup]Group_GG-IT-Admins')
         }
     }
 }
