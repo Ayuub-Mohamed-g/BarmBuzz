@@ -1,0 +1,16 @@
+d105d31 HEAD@{0}: commit: Fix: add missing AllNodes properties, C:\TEST proof-of-life, corrected student tests
+5c2522b HEAD@{1}: commit: Build success - AD domain, OUs, groups, users, GPOs, FGPP all created
+9b2d669 HEAD@{2}: commit: Fix: password policy relaxed, JobTitle->Title in evidence script
+288cca9 HEAD@{3}: commit: fix more errors for varible naming
+a701678 HEAD@{4}: commit: fix errors for varible naming
+e41eaac HEAD@{5}: commit: fix ternary operation error
+820de70 HEAD@{6}: commit: Fix: Unroll DSC node loops, inject AD wait barriers, enforce explicit AGDLP objects, and expand Systems documentation boundaries natively
+70164ee HEAD@{7}: commit: Add custom Pester validation tests for A* criteria
+a4d2778 HEAD@{8}: commit: Refactor architecture for purely data-driven identity loops
+ca6fec1 HEAD@{9}: commit: Compile required Git provenance evidence
+56e0115 HEAD@{10}: commit: Compile required Git provenance evidence
+28c379f HEAD@{11}: commit: Author extensive solution architecture documentation
+7c9d239 HEAD@{12}: commit: Draft AI usage and reflection logs
+99c90e6 HEAD@{13}: commit: Implement A* Architecture with FGPP and Tier Isolation
+1728172 HEAD@{14}: commit: Configure root domain mapping data
+3150dbd HEAD@{15}: clone: from https://github.com/beeteetoo/Student_COM5411_Barmbuzz

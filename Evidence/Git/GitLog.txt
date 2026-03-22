@@ -1,9 +1,19 @@
-* 56e0115 (HEAD -> main) Compile required Git provenance evidence
+* d105d31 (HEAD -> main) Fix: add missing AllNodes properties, C:\TEST proof-of-life, corrected student tests
+* 5c2522b (origin/main, origin/HEAD) Build success - AD domain, OUs, groups, users, GPOs, FGPP all created
+* 9b2d669 Fix: password policy relaxed, JobTitle->Title in evidence script
+* 288cca9 fix more errors for varible naming
+* a701678 fix errors for varible naming
+* e41eaac fix ternary operation error
+* 820de70 Fix: Unroll DSC node loops, inject AD wait barriers, enforce explicit AGDLP objects, and expand Systems documentation boundaries natively
+* 70164ee Add custom Pester validation tests for A* criteria
+* a4d2778 Refactor architecture for purely data-driven identity loops
+* ca6fec1 Compile required Git provenance evidence
+* 56e0115 Compile required Git provenance evidence
 * 28c379f Author extensive solution architecture documentation
 * 7c9d239 Draft AI usage and reflection logs
 * 99c90e6 Implement A* Architecture with FGPP and Tier Isolation
 * 1728172 Configure root domain mapping data
-* 3150dbd (origin/main, origin/HEAD) Update Run_BuildMain.ps1 to use hardcoded credentials for lab purposes; add warnings about security practices and provide alternative production methods.
+* 3150dbd Update Run_BuildMain.ps1 to use hardcoded credentials for lab purposes; add warnings about security practices and provide alternative production methods.
 * 88e23ea imported framework files
 * 39427ae Delete Tests/Pester/PreDC_OLD
 * 829ad91 Rename PreDCPromo.Tests.ps1 to Tests/Pester/PreDCPromo.Tests.ps1
